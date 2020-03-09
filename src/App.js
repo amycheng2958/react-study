@@ -3,8 +3,8 @@ import React from 'react';
 // import MyForm2 from './page/MyForm2';
 // import ContextPage from './page/ContextPage';
 // import ReactReduxPage from './page/ReactReduxPage';
-import ReducerPage from './page/ReducerPage';
-// import ReduxPage from './page/ReduxPage';
+// import ReducerPage from './page/ReducerPage';
+import ReduxPage from './page/ReduxPage';
 // import DialogPage from './page/DialogPage';
 // import HomePage from './page/HomePage';
 function App() {
@@ -16,8 +16,8 @@ function App() {
       {/* <MyForm2/> */}
       {/* <ContextPage/> */}
       {/* <ReactReduxPage/> */}
-      <ReducerPage/>
-      {/* <ReduxPage/> */}
+      {/* <ReducerPage/> */}
+      <ReduxPage/>
       {/* <DialogPage/> */}
     </div>
   );
