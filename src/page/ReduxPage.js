@@ -20,6 +20,7 @@ export default class ReduxPage extends Component {
       
     })
   }
+  
   render() {
     return (
       <div>

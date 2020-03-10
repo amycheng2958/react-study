@@ -1,4 +1,7 @@
-export function createStore(reducer) {
+export function createStore(reducer,enhancer) {
+    if(enhancer) {
+        return enhancer(createStore)(reducer)
+    }
     let currentState = undefined;
     let listeners = []
     function dispatch(action) {
@@ -18,3 +21,25 @@ export function createStore(reducer) {
         subscribe
     }
 }
+
+export function applyMiddleware(...middlewares) {
+    return createStore=>(...args)=>{
+        const store = createStore(...args)
+        let dispatch = store.dispatch
+        const middleApi = {
+            dispatch,
+            getState: store.getState
+        }
+        const middlewaresChain = middlewares.map(middleware=>middleware(middleApi))
+        dispatch = compose(...middlewaresChain)(dispatch)
+        return {
+            ...store,
+            dispatch
+        }
+    }
+}   
+
+function compose(...funcs) {
+   return funcs.reduce((a,b)=>(...args)=>a(b(...args)))
+}
+
